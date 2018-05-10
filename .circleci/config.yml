@@ -1,0 +1,42 @@
+version: 2
+jobs: 
+  build: 
+    docker: 
+      - image: circleci/node:8.9.3
+    working_directory: ~/bogotajs-devops
+
+    steps:
+      - checkout
+      - run: 
+          name: install npm dependencies
+          command: 'npm i'
+      - save_cache: 
+          key: dependency-cache-{{ checksum "./package.json" }}
+          paths:
+            - ./node_modules   
+      - persist_to_workspace:
+          root: ~/bogotajs-devops
+          paths:
+            - ./node_modules  
+  test:
+    docker: 
+      - image: circleci/node:8.9.3
+    working_directory: ~/bogotajs-devops    
+    
+    steps:    
+      - checkout 
+      - attach_workspace:
+          at: ~/bogotajs-devops
+      - run:
+          name: runing test
+          command: 'npm t'
+
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
