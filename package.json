@@ -1,0 +1,36 @@
+{
+  "name": "talk-bogotajs",
+  "version": "0.1.0",
+  "description": "example devops in aplications with node, (CI/CD)",
+  "main": "server.js",
+  "scripts": {
+    "test": "ava --verbose",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolasrestrepo/talk-bogotajs.git"
+  },
+  "keywords": [
+    "circleci",
+    "devops",
+    "docker",
+    "supertest",
+    "ava"
+  ],
+  "author": "Nicolas Restrepo <nicolasrestrepo34@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicolasrestrepo/talk-bogotajs/issues"
+  },
+  "homepage": "https://github.com/nicolasrestrepo/talk-bogotajs#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "nodemon": "^1.17.4",
+    "supertest": "^3.0.0"
+  }
+}
