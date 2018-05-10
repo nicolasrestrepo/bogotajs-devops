@@ -1,5 +1,5 @@
 {
-  "name": "talk-bogotajs",
+  "name": "bogotajs-devops",
   "version": "0.1.0",
   "description": "example devops in aplications with node, (CI/CD)",
   "main": "server.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicolasrestrepo/talk-bogotajs.git"
+    "url": "git+https://github.com/nicolasrestrepo/bogotajs-devops.git"
   },
   "keywords": [
     "circleci",
@@ -22,9 +22,9 @@
   "author": "Nicolas Restrepo <nicolasrestrepo34@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nicolasrestrepo/talk-bogotajs/issues"
+    "url": "https://github.com/nicolasrestrepo/bogotajs-devops/issues"
   },
-  "homepage": "https://github.com/nicolasrestrepo/talk-bogotajs#readme",
+  "homepage": "https://github.com/nicolasrestrepo/bogotajs-devops#readme",
   "dependencies": {
     "express": "^4.16.3"
   },
