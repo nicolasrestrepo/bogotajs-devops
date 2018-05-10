@@ -11,13 +11,13 @@ jobs:
           name: install npm dependencies
           command: 'npm i'
       - save_cache: 
-          key: dependency-cache-{{ checksum "/package.json" }}
+          key: dependency-cache-{{ checksum "./package.json" }}
           paths:
             - /node_modules   
       - persist_to_workspace:
           root: ~/bogotajs-devops
           paths:
-            - /node_modules  
+            - ./node_modules  
   test:
     docker: 
       - image: circleci/node:8.9.3
