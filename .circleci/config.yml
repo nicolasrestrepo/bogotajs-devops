@@ -30,6 +30,25 @@ jobs:
       - run:
           name: runing test
           command: 'npm t'
+  deploy:
+    docker:
+      - image: circle/node:8.9.3
+    working_directory: ~/bogotajs-devops
+    
+    steps: 
+      - checkout
+      - attach_workspace:
+          at: ~/bogotajs-devops
+      - run:
+          name: install now
+          command: 'npm i -g now'
+      - run:     
+          name: deploy qa
+          command: |
+            URL=$(now --docker -t $NOW_TOKEN)
+            echo "running acceptance on $URL"
+            curl --silent -L $URL
+
 
 
 workflows:
@@ -40,3 +59,6 @@ workflows:
       - test:
           requires:
             - build
+      - deploy:
+          requires:
+            - test      
