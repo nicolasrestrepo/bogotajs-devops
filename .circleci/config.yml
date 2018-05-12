@@ -32,7 +32,7 @@ jobs:
           command: 'npm t'
   deploy:
     docker:
-      - image: circle/node:8.9.3
+      - image: circleci/node:8.9.3
     working_directory: ~/bogotajs-devops
     
     steps: 
