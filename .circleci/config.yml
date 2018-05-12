@@ -44,16 +44,14 @@ jobs:
           command: 'sudo npm i -g now'
       - run:     
           name: deploy qa
-          command: |
-            URL=$(now --docker -t $NOW_TOKEN)
-            echo "running acceptance on $URL"
-            curl --silent -L $URL
+          command: now --docker -t $NOW_TOKEN
+
 
 
 
 workflows:
   version: 2
-  build_and_test:
+  build_and_deploy:
     jobs:
       - build
       - test:
