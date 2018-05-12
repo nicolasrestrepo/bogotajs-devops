@@ -44,8 +44,10 @@ jobs:
           command: 'sudo npm i -g now'
       - run:     
           name: deploy qa
-          command: now --docker -t $NOW_TOKEN
-
+          command: URL=$(now --docker -t $NOW_TOKEN)
+      - run:
+          name: echo url
+          command: echo $URL  
 
 
 
