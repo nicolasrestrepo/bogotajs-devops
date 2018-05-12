@@ -44,9 +44,7 @@ jobs:
           command: 'sudo npm i -g now'
       - run:     
           name: deploy qa
-          command: | 
-            URL=$(now --docker -t $NOW_TOKEN)
-            echo "$URL"
+          command: sh deployments/qa.sh
 
 
 
@@ -62,3 +60,6 @@ workflows:
       - deploy:
           requires:
             - test      
+          filters: 
+            branches:
+              only: /feature/*  
