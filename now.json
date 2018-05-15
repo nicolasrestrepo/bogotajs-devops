@@ -1,0 +1,5 @@
+{
+    "name": "bogotajs-devops",
+    "alias": "production-bogotajs-devops",
+    "type": "docker"
+}

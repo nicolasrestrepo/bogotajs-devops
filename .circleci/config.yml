@@ -30,7 +30,7 @@ jobs:
       - run:
           name: runing test
           command: 'npm t'
-  deploy:
+  deploy-qa:
     docker:
       - image: circleci/node:8.9.3
     working_directory: ~/bogotajs-devops
@@ -39,24 +39,42 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/bogotajs-devops
-      - run:
-          name: install now
-          command: 'sudo npm i -g now'
       - run:     
           name: deploy qa
           command: sh deployments/qa.sh
 
-
+  deploy-production:      
+    docker:
+      - image: circleci/node:8.9.3
+    working_directory: ~/bogotajs-devops
+    
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/bogotajs-devops
+      - run:    
+          name: deploy production
+          command: sh deployments/production.sh
 
 
 workflows:
   version: 2
-  build_and_deploy:
+  build_accept_deploy:
     jobs:
       - build
       - test:
           requires:
             - build
-      - deploy:
+      - deploy-qa:
           requires:
-            - test      
+            - test    
+          filters:    
+            branches:
+              ignore: master
+      - deploy-production:     
+          requires:
+            - test  
+          filters:
+            branches:
+              only: master
+
