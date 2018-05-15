@@ -45,7 +45,6 @@ jobs:
 
   deploy-production:      
     docker:
-      docker:
       - image: circleci/node:8.9.3
     working_directory: ~/bogotajs-devops
     
